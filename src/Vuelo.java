@@ -14,5 +14,8 @@ public class Vuelo {
     public String destino;
     public LocalDateTime fechaSalida;
     public LocalDateTime fechaLlegada;
+    public int pesomax;
+    public int capacidad;
+    public boolean visa;
 }
 
