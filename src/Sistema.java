@@ -1,48 +1,67 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.List;
 
-public class  Sistema {
+public class Sistema {
 
-    private String usuario;
-    private String contraseña;
-    private String nombre;
-    private String correo;
+    private List<Usuario> usuarios;
 
-    public Sistema{
-        this.usuario = usuario;
-        this.contraseña = contraseña;
-        this.nombre = nombre;
-        this.correo = correo;
+    public Sistema() {
+        usuarios = new ArrayList<>();
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContraseña(){
-        return contraseña;
-    }
-    public void setContraseña(String contraseña){
-        this.contraseña = contraseña;
+    public int buscar(String usuario) {
+        int n = -1;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getUsuario().equals(usuario)) {
+                n = i;
+                break;
+            }
+        }
+        return n;
     }
 
-    public String getNombre(){
-        return nombre;
-    }
-    public void setNombre(String nombre){
-        this.nombre = nombre;
+    public boolean insertar(Usuario usuario) {
+        if (buscar(usuario.getUsuario()) == -1) {
+            usuarios.add(usuario);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public String getCorreo(){
-        return correo;
+    public boolean modificar(Usuario usuario) {
+        if (buscar(usuario.getUsuario()) != -1) {
+            Usuario usuarioaux = obtener(usuario);
+
+            usuarioaux.setUsuario(usuario.getUsuario());
+            usuarioaux.setContraseña(usuario.getContraseña());
+            usuarioaux.setNombre(usuario.getNombre());
+            usuarioaux.setCorreo(usuario.getCorreo());
+
+            return true;
+        }
+        else
+            return false;
     }
-    public void setCorreo(String correo){
-        this.correo = correo;
+
+    public boolean eliminar(String usuario) {
+        if (buscar(usuario) != -1) {
+            usuarios.remove(buscar(usuario));
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public Usuario obtener (String usuario) {
+        if (buscar(usuario) != -1) {
+            return usuarios.get(buscar(usuario));
+        }
+        else
+            return null;
     }
 
     public static void main(String[] args) {
@@ -51,6 +70,8 @@ public class  Sistema {
         Vuelo v1 = new Vuelo();
         Vuelo v2 = new Vuelo();
         Vuelo v3 = new Vuelo();
+
     }
+
 }
 

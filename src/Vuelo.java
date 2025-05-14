@@ -14,8 +14,30 @@ public class Vuelo {
     public String destino;
     public LocalDateTime fechaSalida;
     public LocalDateTime fechaLlegada;
-    public int pesomax;
     public int capacidad;
     public boolean visa;
+
+    public Vuelo(){
+        System.out.println("Ingresar ID");
+        id = leer.nextInt();
+        System.out.println("Ingresar modelo avion");
+        avion = leer.nextLine();
+        System.out.println("Ingresar antiguedad");
+        antiguedad = leer.nextLine();
+        System.out.println("Ingresar lugar de salida");
+        origen = leer.nextLine();
+        System.out.println("Ingresar destino);
+        destino = leer.nextDouble();
+        System.out.println("Ingresar fecha salida");
+        fechaSalida= LocalDateTime(leer.nextLine());
+        System.out.println("Ingresar fecha llegada");
+        fechaLlegada = LocalDateTime(leer.nextLine());
+        System.out.println("Ingresar capacidad de pasajeros");
+        capacidad = leer.nextLine();
+        System.out.println("Tiene visa");
+        visa = leer.nextBoolean();
+    }
+
 }
+
 
